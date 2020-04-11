@@ -64,7 +64,7 @@ Constraints:
     }
 
     public static void main(String[] args) {
-        int[] array = {1, 1, 4, 5, 3, 3};
+        int[] array = {1, 1, 3, 5, 3, 3};
         System.out.println("No. of such elements are " + countElements(array));
     }
 }
