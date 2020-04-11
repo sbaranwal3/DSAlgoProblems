@@ -45,11 +45,10 @@ class MinStack
 
         if (x < minEle)
         {
-            if(x == Integer.MIN_VALUE){
-                s.push(x);}
-            else{
+            if(x == Integer.MIN_VALUE)
+                s.push(x);
+            else
                 s.push(2*x - minEle);
-            }
             minEle = x;
         }
 
@@ -59,16 +58,12 @@ class MinStack
 
     public void pop() {
         if (s.isEmpty())
-        {
             return;
-        }
+
         int t = s.pop();
 
         if (t < minEle)
-        {
             minEle = 2*minEle - t;
-        }
-
     }
 
     public int top() {
@@ -77,9 +72,8 @@ class MinStack
 
         int t = s.peek();
 
-        if (t < minEle){
-            t = minEle;
-        }
+        if (t < minEle)
+            return minEle;
 
         return t;
 
@@ -89,10 +83,10 @@ class MinStack
         if (s.isEmpty())
             return 0;
         //If only 1 element is left in stack, minEle = that element
-        else if(s.size()==1)
+        if(s.size()==1)
             return s.peek();
-        else
-            return minEle;
+
+        return minEle;
 
     }
 
