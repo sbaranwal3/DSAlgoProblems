@@ -22,39 +22,42 @@ The string size will be in the range [1, 100].
  */
 public class ValidParenthesisString {
     public static boolean checkValidString(String s) {
-        if (s.length()<1)
+        if (s.isEmpty())
             return true;
 
-        if (!(s.startsWith("(") || s.startsWith("*")) || !(s.endsWith(")") || s.endsWith("*")))
+        if (s.startsWith(")") || s.endsWith("("))
             return false;
 
-        int balance = 0;
+        int countLeftP = 0;
+        int countRightP = 0;
+        int countStar = 0;
         for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(')
+                countLeftP++;
+
             if (s.charAt(i) == ')')
-                balance--;
-            else
-                balance++;
-            if(balance<0)
-                return false;
+                countRightP++;
+
+            if (s.charAt(i) == '*')
+                countStar++;
+
         }
-        if(balance==0)
+        if(countLeftP==0 && countRightP==0){
+            return true;
+        }
+        if (countLeftP == countRightP)
+            return true;
+        if (countLeftP > countRightP && countRightP + countStar >= countLeftP)
             return true;
 
-        balance=0;
+        if (countRightP > countLeftP && countLeftP + countStar >= countRightP)
+            return true;
 
-        for (int i = s.length()-1; i >= 0; i--) {
-            if (s.charAt(i) == '(')
-                balance--;
-            else
-                balance++;
-            if(balance<0)
-                return false;
-        }
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {
-        String abc = "(())***)";
+        String abc = "()**()";
         System.out.println("Is string valid? " + checkValidString(abc));
     }
 }
