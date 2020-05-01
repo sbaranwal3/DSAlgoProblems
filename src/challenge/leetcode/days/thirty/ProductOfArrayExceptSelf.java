@@ -20,20 +20,32 @@ import java.util.Arrays;
 public class ProductOfArrayExceptSelf {
 
     /*
-    Three different solutions: but solution 1 & 2 fail when one of the numbers is 0 in the array and one of them is non-zero
+    Three different solutions
      */
 
     public static int[] productExceptSelfWithDivision(int[] nums) {
         int product = 1;
+        int zeroesCount=0;
         for (int i = 0; i < nums.length; i++) {
+            if(nums[i]==0)
+                zeroesCount++;
+            else
             product *= nums[i];
         }
-        for (int i = 0; i < nums.length; i++) {
-            try {
-                nums[i] = product / nums[i];
-            } catch (ArithmeticException ex) {
-                nums[i] = product;
-            }
+        if(zeroesCount>1) {
+            for (int i = 0; i < nums.length; i++)
+                nums[i] = 0;
+        }
+        else if(zeroesCount==1){
+            for (int i = 0; i < nums.length; i++)
+                if(nums[i]==0)
+                    nums[i] = product;
+                else
+                nums[i] = 0;
+        }
+        else{
+            for (int i = 0; i < nums.length; i++)
+                nums[i] = product/nums[i];
         }
         return nums;
     }
@@ -96,7 +108,7 @@ x = antilog(log(a) + log(b) + log(c) + log(d))
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4};
+        int[] nums = {1, 0, 2, 3};
         System.out.println("Product of array except self without using division is: " + Arrays.toString(productExceptSelfWithoutDivision(nums)));
         System.out.println("Product of array except self using division is: " + Arrays.toString(productExceptSelfWithDivision(nums)));
         int[] nums2 = {1, 2, 3, 4};

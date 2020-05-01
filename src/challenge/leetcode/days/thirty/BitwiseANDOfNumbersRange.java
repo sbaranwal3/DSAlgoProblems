@@ -45,7 +45,7 @@ public class BitwiseANDOfNumbersRange {
     }
 
     public static void main(String[] args) {
-        int m = 1, n = 7;
+        int m = 3, n = 7;
 
         //    System.out.println("Bitwise AND Of Numbers in the range is: "+ rangeBitwiseAnd(m,n));
         System.out.println("Bitwise AND Of Numbers in the range is: " + rangeBitwiseAndUsingMSB(m, n));
