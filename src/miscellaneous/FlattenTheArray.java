@@ -56,5 +56,11 @@ public class FlattenTheArray {
         //Approach2
         Integer[] flatUsingArrayList = flattenApproach2(array);
         System.out.println("flatUsingArrayList: "+Arrays.toString(flatUsingArrayList));
+
+        String a = "[[6,4,7,[9,5,4,[2,4,8]]],[2,2,7],[9,0,7,[9,3,1,8,5]]]";
+        a= a.replaceAll("[\\[\\]]", "");
+        String[] b = a.split(",");
+        int[] flatUsingStringArray = Arrays.stream(b).mapToInt(Integer::parseInt).toArray();
+        System.out.println("flatUsingStringArray: "+Arrays.toString(b));
     }
 }
