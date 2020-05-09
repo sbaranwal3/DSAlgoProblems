@@ -15,6 +15,7 @@ Follow up:
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
      */
 
+    //Kadane's ALgorithm
         public static int maxSubArray(int[] nums) {
             int maxSoFar = nums[0];
             int maxEndingHere =  nums[0];
