@@ -94,7 +94,7 @@ public class ReverseNodesInKGroup {
         listNode.next.next = new ListNode(3);
         listNode.next.next.next = new ListNode(4);
         listNode.next.next.next.next = new ListNode(5);
-//        ListNode reversed = reverseKGroup(listNode, 3);
+//        ListNode reversed = reverseKGroupApproach1(listNode, 3);
 //        printList(reversed);
         ListNode reversedApproach2 = reverseKGroupApproach2(listNode, 3);
         printList(reversedApproach2);

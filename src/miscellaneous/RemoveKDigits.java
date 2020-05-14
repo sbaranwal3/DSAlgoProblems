@@ -27,7 +27,7 @@ import java.util.Stack;
 
 public class RemoveKDigits {
 
-    //Greedy Algorithm: Time Complexity O(kn), Space O(1)
+    //Greedy Algorithm: Time Complexity O(k+n), Space O(1)
     public static String removeKdigits(String num, int k) {
         if (k >= num.length())
             return "0";
@@ -35,12 +35,12 @@ public class RemoveKDigits {
             return num;
 
         StringBuilder sb = new StringBuilder();
-        int i=0;
+        int i = 0;
         while (i < num.length()) {
-                while (k > 0 && sb.length() > 0 && sb.charAt(sb.length() - 1) > num.charAt(i)) {
-                    sb.deleteCharAt(sb.length() - 1);
-                    k--;
-                }
+            while (k > 0 && sb.length() > 0 && sb.charAt(sb.length() - 1) > num.charAt(i)) {
+                sb.deleteCharAt(sb.length() - 1);
+                k--;
+            }
             sb.append(num.charAt(i));
             i++;
         }
@@ -86,10 +86,34 @@ public class RemoveKDigits {
         return sb.toString();
     }
 
+    public static String removeKdigitsApproach3(String num, int k) {
+        if (k >= num.length())
+            return "0";
+        if (k == 0)
+            return num;
+        int i = 0;
+        while (k > 0) {
+            i = (i > 0) ? (i - 1) : 0;
+            while (i < num.length() - 1 && num.charAt(i) <= num.charAt(i + 1))
+                i++;
+            num = num.substring(0, i) + num.substring(i + 1);
+            k--;
+        }
+        i = 0;
+        while (i < num.length() && num.charAt(i) == '0')
+            i++;
+        if (i > 0)
+            num = num.substring(i);
+        if (num.length() == 0)
+            return "0";
+        return num;
+    }
+
     public static void main(String[] args) {
         String num = "19864409232";
         int k = 5;
         System.out.println("Smallest number after removing " + k + " digits is: " + removeKdigits(num, k));
         System.out.println("Smallest number after removing " + k + " digits using stack is: " + removeKdigitsUsingStack(num, k));
+        System.out.println("Smallest number after removing " + k + " digits using approach3 is: " + removeKdigitsApproach3(num, k));
     }
 }
