@@ -34,7 +34,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
             //Initialize max profit as 0 and current profit as 0
             int maxProfit = 0;
-            int currentProfit = 0;
+            int currentProfit;
             for (int i = 0; i < prices.length - 1; i++) {
                 currentProfit = prices[i + 1] - prices[i];
                 //check if currentProfit with buying the stock at current price gives profit, if yes, then add it to maxProfit
