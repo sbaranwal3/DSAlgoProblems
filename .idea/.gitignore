@@ -1,0 +1,22 @@
+# Default ignored files
+*.xml
+*.class
+.DS_Store
+.classpath
+.project
+.settings
+.factorypath
+out/
+temp/
+
+#Gradle
+/bin/
+tmp/*
+
+# IDEA
+*.ipr
+*.iws
+.idea
+*.log
+/.apt_generated/
+*.iml
