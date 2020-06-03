@@ -42,10 +42,10 @@ public class OddEvenLinkedList {
         head.next.next.next.next.next = new ListNode(4);
         head.next.next.next.next.next.next = new ListNode(7);
         System.out.println("Final linked list after grouping odds and even is: ");
-        printMidNodeAndValues(oddEvenList(head));
+        printLinkedList(oddEvenList(head));
     }
 
-    private static void printMidNodeAndValues(ListNode head) {
+    private static void printLinkedList(ListNode head) {
         while (head != null) {
             System.out.println(head.val);
             head = head.next;
