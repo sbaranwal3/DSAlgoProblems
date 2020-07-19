@@ -72,7 +72,7 @@ public class CourseSchedule {
 }
 
 /*
-0---> unvisited
+0---> not visited
 1---> being visited
 2---> completed
  */
